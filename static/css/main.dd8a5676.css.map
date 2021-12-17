@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.dd8a5676.css","mappings":"AAAA,KACE,2BAA+B,CADjC,kBCCE,kBAAmB","sources":["styles/index.scss","styles/Bootstrap/Header.scss"],"sourcesContent":["body {\n  font-family: \"Gotu\", sans-serif;\n  @import \"App\";\n}\n",".Header {\n  margin-bottom: 15px;\n}\n"],"names":[],"sourceRoot":""}
