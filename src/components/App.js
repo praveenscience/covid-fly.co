@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import Header from "./Bootstrap/Header";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>COVID Fly</h1>
+        <Header dark={true} className="Header">
+          COVID Flight Experiences
+        </Header>
       </div>
     );
   }
