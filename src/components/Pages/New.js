@@ -91,17 +91,20 @@ class New extends Component {
                 <div className="form-group">
                   <label htmlFor="Editor">Write your Experience...</label>
                   <div className="border rounded p-1">
-                    <Editor placeholder="Please write your experience of travel. You can write like how you'll be writing on Medium." />
+                    <Editor
+                      placeholder="Please write your experience of travel. You can write like how you'll be writing on Medium."
+                      onChange={value => {
+                        this.setState({
+                          Description: value()
+                        });
+                      }}
+                    />
                   </div>
                 </div>
               </form>
             </div>
             <div className="col-12 col-md-6">
               <h2>Files to Commit</h2>
-              <h3>State</h3>
-              <pre className="border rounded bg-light p-1">
-                {JSON.stringify(this.state, null, 2)}
-              </pre>
               <h3>
                 Update <code>Experiences.json</code> Array
               </h3>
@@ -129,7 +132,9 @@ class New extends Component {
               <h3>
                 Create a Markdown File <code>{DescFile}</code>
               </h3>
-              <pre className="border rounded bg-light p-1">{`Markdown Contents`}</pre>
+              <pre className="border rounded bg-light p-1">
+                {this.state.Description}
+              </pre>
             </div>
           </div>
         </div>
