@@ -3,7 +3,18 @@ import FormGroup from "../Bootstrap/FormGroup";
 import Editor from "rich-markdown-editor";
 
 class New extends Component {
-  state = {};
+  state = {
+    Source: "",
+    Destination: "",
+    Hops: "",
+    Docs: "",
+    QuarantineInfo: "",
+    TravelDate: "",
+    Author: "",
+    Email: "",
+    Description: "",
+    DescFile: ""
+  };
   render() {
     const FormFields = [
       {
@@ -42,7 +53,7 @@ class New extends Component {
       {
         Id: "TravelDate",
         Label: "Travel Date",
-        Type: "datetime",
+        Type: "date",
         Placeholder: "Enter the Date and Time when you're travelling."
       },
       {
@@ -66,7 +77,14 @@ class New extends Component {
               <h2>Enter your Experience</h2>
               <form>
                 {FormFields.map(fg => (
-                  <FormGroup key={fg.Id} {...fg} />
+                  <FormGroup
+                    key={fg.Id}
+                    {...fg}
+                    Value={this.state[fg.Id]}
+                    onChange={e => {
+                      this.setState({ [fg.Id]: e.target.value });
+                    }}
+                  />
                 ))}
                 <div className="form-group">
                   <label htmlFor="Editor">Write your Experience...</label>
@@ -78,25 +96,29 @@ class New extends Component {
             </div>
             <div className="col-12 col-md-6">
               <h2>Files to Commit</h2>
+              <h3>State</h3>
+              <pre className="border rounded bg-light p-1">
+                {JSON.stringify(this.state, null, 2)}
+              </pre>
               <h3>
                 Update <code>Experiences.json</code> Array
               </h3>
               <pre className="border rounded bg-light p-1">
                 {JSON.stringify(
                   {
-                    Source: "",
-                    Destination: "",
-                    Hops: [],
-                    Docs: [],
-                    QuarantineInfo: "",
-                    TravelDate: "2021-12-15T01:20:20.000Z",
+                    Source: this.state.Source,
+                    Destination: this.state.Destination,
+                    Hops: this.state.Hops.split("\n"),
+                    Docs: this.state.Docs.split("\n"),
+                    QuarantineInfo: this.state.QuarantineInfo,
+                    TravelDate: this.state.TravelDate,
                     Meta: {
-                      Author: "",
-                      Email: "",
-                      DatePosted: "2021-12-15T01:20:20.000Z"
+                      Author: this.state.Author,
+                      Email: this.state.Email,
+                      DatePosted: new Date().toISOString()
                     },
-                    Description: "",
-                    DescFile: ""
+                    Description: this.state.Description,
+                    DescFile: this.state.DescFile
                   },
                   null,
                   2
