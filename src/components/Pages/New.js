@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FormGroup from "../Bootstrap/FormGroup";
+import Editor from "rich-markdown-editor";
 
 class New extends Component {
   state = {};
@@ -67,6 +68,12 @@ class New extends Component {
                 {FormFields.map(fg => (
                   <FormGroup key={fg.Id} {...fg} />
                 ))}
+                <div className="form-group">
+                  <label htmlFor="Editor">Write your Experience...</label>
+                  <div className="border rounded p-1">
+                    <Editor />
+                  </div>
+                </div>
               </form>
             </div>
             <div className="col-12 col-md-6">
