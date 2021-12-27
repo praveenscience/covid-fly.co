@@ -12,8 +12,7 @@ class New extends Component {
     TravelDate: "",
     Author: "",
     Email: "",
-    Description: "",
-    DescFile: ""
+    Description: ""
   };
   render() {
     const FormFields = [
@@ -69,6 +68,9 @@ class New extends Component {
         Placeholder: "Please enter your email address."
       }
     ];
+    const DescFile = `${this.state.Source}-${
+      this.state.Destination
+    }-${new Date().getTime()}.md`;
     return (
       <div className="New">
         <div className="container-fluid">
@@ -118,13 +120,15 @@ class New extends Component {
                       DatePosted: new Date().toISOString()
                     },
                     Description: this.state.Description,
-                    DescFile: this.state.DescFile
+                    DescFile: DescFile
                   },
                   null,
                   2
                 )}
               </pre>
-              <h3>Create a Markdown File</h3>
+              <h3>
+                Create a Markdown File <code>{DescFile}</code>
+              </h3>
               <pre className="border rounded bg-light p-1">{`Markdown Contents`}</pre>
             </div>
           </div>
