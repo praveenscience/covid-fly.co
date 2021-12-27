@@ -71,7 +71,7 @@ class New extends Component {
                 <div className="form-group">
                   <label htmlFor="Editor">Write your Experience...</label>
                   <div className="border rounded p-1">
-                    <Editor />
+                    <Editor placeholder="Please write your experience of travel. You can write like how you'll be writing on Medium." />
                   </div>
                 </div>
               </form>
